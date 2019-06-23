@@ -1,29 +1,16 @@
-# micro-container
+# MicroFrontend Project - Container
+
+## Projects
+
+[Container](https://github.com/juandiegombr/vue-microfrontend-container)
+[First MicroFrontend](https://github.com/juandiegombr/vue-microfrontend-first-page)
+[Second MicroFrontend](https://github.com/juandiegombr/vue-microfrontend-second-page)
 
 ## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. Install 'http-server' globally: ``yarn global add http-server``
+2. Download each project.
+3. Init each MicroFrontend server (First and Second) with ``yarn serve``
+   It will run a server in the defined port with cors mode.
+4. Init the container project with ``yarn serve``
+5. Open the MicroFrontend Project served at http://localhost:8080/ by default, and navigate throught the sidebar menu.
