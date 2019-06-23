@@ -1,5 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="page">
+    <h1>About</h1>
+    <p>This is a page from the container project</p>
   </div>
 </template>

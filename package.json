@@ -1,6 +1,10 @@
 {
-  "name": "micro-container",
+  "name": "microfrontend-container",
   "version": "0.1.0",
+  "author": {
+    "name": "Juan Diego Martín-Blas",
+    "email": "juandiego.mbr@gmail.com"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -1,14 +1,23 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <div class="main-container">
+      <div class="sidebar-menu">
+        <router-link to="/">Home</router-link>
+        <router-link to="/first">First</router-link>
+        <router-link to="/second">Second</router-link>
+        <router-link to="/about">About</router-link>
+      </div>
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <style>
+body {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,14 +27,43 @@
 }
 #nav {
   padding: 30px;
+  background-color: #4DBDD5;
 }
 
-#nav a {
+.sidebar-menu a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #FFF;
+  text-decoration: none;
+  padding: 16px
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.sidebar-menu a:hover {
+  background-color: #FFFFFF65;
+}
+
+.sidebar-menu a.router-link-exact-active {
+  background-color: #FFFFFF20;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background-color: #00205B;
+  height: calc(100vh - 60px);
+}
+
+.main-container {
+  display: flex;
+}
+
+.page {
+  padding: 40px;
+  width: calc(100vw - 240px);
+  box-sizing: border-box;
+}
+
+.page h1 {
+  margin: 0px;
 }
 </style>
