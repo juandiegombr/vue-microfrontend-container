@@ -3,7 +3,9 @@
 ## Projects
 
 [Container](https://github.com/juandiegombr/vue-microfrontend-container)
+
 [First MicroFrontend](https://github.com/juandiegombr/vue-microfrontend-first-page)
+
 [Second MicroFrontend](https://github.com/juandiegombr/vue-microfrontend-second-page)
 
 ## Project setup
