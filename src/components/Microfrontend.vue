@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import router from '../router'
+import router from '@/router'
+import store from '@/store'
 
 export default {
   name: 'Microfrontend',
@@ -20,16 +21,16 @@ export default {
   methods: {
     renderMicroFrontend () {
       const { name } = this
-      console.log(`Render: ${name}`)
-      window[`render${name}`](`${name}-container`, router)
+      window[`render${name}`](`${name}-container`, router, store)
     },
     loadStyles (manifest) {
+      if (!manifest['app.css']) return
       const { host } = this
-      const style  = document.createElement('link');
+      const style  = document.createElement('link')
+      style.href = `${host}${manifest['app.css']}`
       style.id = 'cssId'
       style.rel = 'stylesheet'
       style.type = 'text/css'
-      style.href = `${host}${manifest['app.css']}`
       style.media = 'all'
       document.head.appendChild(style)
     },
@@ -64,15 +65,9 @@ export default {
     fetch(`${host}asset-manifest.json`)
       .then(res => res.json())
       .then(manifest => {
-        console.log(manifest)
         this.loadStyles(manifest)
         this.loadChunkScript(manifest)
       });
-  },
-
-  beforeDestroy () {
-    const { name } = this
-    console.log(`Destroy: ${name}`)
   }
 }
 </script>

@@ -26,6 +26,11 @@ export default new Router({
       component: SecondWrapper
     },
     {
+      path: '/second/:id',
+      name: 'second-id',
+      component: SecondWrapper
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./views/About.vue')

@@ -1,7 +1,7 @@
 <template>
-<div>
-  <Microfrontend name="First" host='http://localhost:8081/' />
-</div>
+  <div id="first-wrapper">
+    <Microfrontend name="First" host='http://localhost:8081/' />
+  </div>
 </template>
 
 <script>
