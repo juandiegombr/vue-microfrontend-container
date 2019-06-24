@@ -1,5 +1,7 @@
 # MicroFrontend Project - Container
 
+Project based on the article [Micro frontends](https://martinfowler.com/articles/micro-frontends.html) written by [Cam Jackson](https://camjackson.net/).
+
 ## Projects
 
 [Container](https://github.com/juandiegombr/vue-microfrontend-container)
