@@ -4,7 +4,6 @@
 
 <script>
 import router from '@/router'
-import store from '@/store'
 
 export default {
   name: 'Microfrontend',
@@ -21,7 +20,34 @@ export default {
   methods: {
     renderMicroFrontend () {
       const { name } = this
-      window[`render${name}`](`${name}-container`, router, store)
+      window[`render${name}`](`${name}-container`, router, this.registerListeners, this.unregisterListeners)
+    },
+    registerListeners (listeners) {
+      listeners.forEach(listener => {
+        const handler = this.eventRepeater(listener)
+        listener.handler = handler
+        window.addEventListener(listener.event, handler)
+      })
+      this.listeners = listeners
+    },
+    eventRepeater (listener) {
+      const handler = e => {
+        const element = document.querySelector(listener.selector)
+        if (element) {
+          element.dispatchEvent(new CustomEvent(`${listener.event}-repeater`, { detail: e.detail }))
+        }
+      }
+      return handler
+    },
+    unregisterListeners () {
+      this.listeners.forEach(listener => {
+        const element = document.querySelector(listener.selector)
+        if (element) {
+          element.removeEventListener(listener.event)
+        }
+        window.removeEventListener(listener.event, listener.handler)
+      })
+
     },
     loadStyles (manifest) {
       if (!manifest['app.css']) return
@@ -58,6 +84,7 @@ export default {
     const scriptId = `micro-frontend-script-${name}`
 
     if (document.getElementById(scriptId)) {
+      console.log('🚀 Script already added. Rendering Microfrontend!')
       this.renderMicroFrontend()
       return
     }
@@ -68,6 +95,18 @@ export default {
         this.loadStyles(manifest)
         this.loadChunkScript(manifest)
       });
+  },
+
+  beforeDestroy () {
+    const { name } = this
+    window[`unmount${name}`]()
+    this.unregisterListeners()
+  },
+
+  data () {
+    return {
+      listeners: []
+    }
   }
 }
 </script>

@@ -11,7 +11,8 @@
         <router-link to="/" class="home">Home</router-link>
         <router-link to="/first">First</router-link>
         <router-link to="/second">Second</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/third">Third</router-link>
+        <a href="#" @click="sendEvent">Event</a>
       </div>
       <router-view/>
     </div>
@@ -23,6 +24,15 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState(['user'])
+  },
+  methods: {
+    sendEvent () {
+      const event = new CustomEvent('custom-event', {
+        bubbles: true,
+        detail: { source: 'Container' }
+      })
+      this.$refs.app.dispatchEvent(event)
+    }
   },
   mounted () {
     this.$refs.app.addEventListener('changeUser',  e => { 

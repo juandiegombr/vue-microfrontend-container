@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import FirstWrapper from './views/FirstWrapper.vue'
 import SecondWrapper from './views/SecondWrapper.vue'
+import ThirdWrapper from './views/ThirdWrapper.vue'
 
 Vue.use(Router)
 
@@ -31,9 +32,9 @@ export default new Router({
       component: SecondWrapper
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue')
+      path: '/third',
+      name: 'third',
+      component: ThirdWrapper
     }
   ]
 })
